@@ -11,19 +11,10 @@ namespace LibrarySystem
         static void Main(string[] args)
         {
             var libraryService = new LibraryService();
-            bool isRunning = true;
-            //IUser currentUser = null;
+            bool isRunning = true;            
 
             while (isRunning)
-            {
-                //if (currentUser == null)
-                //{
-                //    // Register User
-                //    Console.WriteLine("Enter your name to register:");
-                //    string name = Console.ReadLine();
-                //    currentUser = libraryService.RegisterUser(name);
-                //}
-
+            {               
                 // Show menu
                 Console.WriteLine("\nSelect an option:");
                 Console.WriteLine("1. Add User");
@@ -56,31 +47,7 @@ namespace LibrarySystem
                         {
                             var removeUserId = libraryService.SelectUserFromUserList();
                             if (removeUserId < 0)
-                                throw new Exception("Invalid User");
-                            //var users = libraryService.GetAllUsers();
-                            //if (users.Count == 0)
-                            //{
-                            //    Console.WriteLine("No User available to remove.");
-                            //    break;
-                            //}
-
-                            //// If there are books, show them and allow removal
-                            //Console.WriteLine("Available Users:");
-                            //for (int i = 0; i < users.Count; i++)
-                            //{
-                            //    Console.WriteLine($"{users[i].UserId} . {users[i].Name})");
-                            //}
-
-                            //Console.WriteLine("Enter the UserId you want to remove:");
-                            //try
-                            //{
-                            //    int userId = int.Parse(Console.ReadLine());
-                            //    var userToRemove = users.FirstOrDefault(x => x.UserId == userId);
-                            //    if (userToRemove == null)
-                            //    {
-                            //        Console.WriteLine("User not found.");
-                            //        break;
-                            //    }
+                                throw new Exception("Invalid User");                            
 
                             libraryService.UnregisterUser(removeUserId);
                         }
@@ -209,22 +176,7 @@ namespace LibrarySystem
                                     break;
                                 }
 
-                                var bookToBorrow = booksToBorrow[borrowIndex];
-                                //var usersList = libraryService.GetAllUsers();
-                                //Console.WriteLine("Available Users:");
-                                //for (int i = 0; i < usersList.Count; i++)
-                                //{
-                                //    Console.WriteLine($"{usersList[i].UserId} . {usersList[i].Name})");
-                                //}
-
-                                //Console.WriteLine("Enter the UserId you want to Add the book:");
-                                //int userId = int.Parse(Console.ReadLine());
-                                //var userToAddBook = usersList.FirstOrDefault(x => x.UserId == userId);
-                                //if (userToAddBook == null)
-                                //{
-                                //    Console.WriteLine("User not found.");
-                                //    break;
-                                //}
+                                var bookToBorrow = booksToBorrow[borrowIndex];                                
                                 var borrowingUserId = libraryService.SelectUserFromUserList();
                                 if (borrowingUserId < 0)
                                     throw new Exception("Invalid User");
@@ -278,13 +230,7 @@ namespace LibrarySystem
                             Console.WriteLine("Invalid Selection.");
                         }
                         break;
-
-                    //case "11":
-                    //    // Unregister User
-                    //    libraryService.UnregisterUser(currentUser.UserId);
-                    //    currentUser = null;
-                    //    break;
-
+                   
                     case "11":
                         // Exit
                         isRunning = false;
