@@ -27,8 +27,8 @@ namespace LibrarySystem
                 Console.WriteLine("8. Get All Books");
                 Console.WriteLine("9. Borrow Book");
                 Console.WriteLine("10. Return Book");
-                //Console.WriteLine("11. Unregister User");
-                Console.WriteLine("11. Exit");
+                Console.WriteLine("11. Get All Users");
+                Console.WriteLine("12. Exit");
 
                 string choice = Console.ReadLine();
 
@@ -39,7 +39,7 @@ namespace LibrarySystem
                         Console.WriteLine("Enter your name to register:");
                         string name = Console.ReadLine();
                         var user = libraryService.RegisterUser(name);
-                        Console.WriteLine($"User {user.Name} registered with ID {user.UserId}.");
+                       // Console.WriteLine($"User {user.Name} registered with ID {user.UserId}.");
                         break;
                     case "2":
                         // Remove User
@@ -230,8 +230,17 @@ namespace LibrarySystem
                             Console.WriteLine("Invalid Selection.");
                         }
                         break;
-                   
                     case "11":
+                        // Get All Users
+                        var users = libraryService.GetAllUsers();
+                        Console.WriteLine("Registered Users:");
+                        foreach (var u in users)
+                        {
+                            Console.WriteLine($"User ID: {u.UserId}, Name: {u.Name}");
+                        }
+                        break;
+
+                    case "12":
                         // Exit
                         isRunning = false;
                         break;
